@@ -22,7 +22,7 @@ public class Student {
         String[] answers = new String[paper.size()];
         Scanner input = new Scanner(System.in);
         for (int i = 0; i < paper.size(); i++) {
-            System.out.println(paper.get(i).getTitle());
+            System.out.println(i + 1 + ". " + paper.get(i).getTitle());
             System.out.println("请输入答案");
             String an = input.nextLine();
             answers[i] = an;

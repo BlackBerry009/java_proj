@@ -3,22 +3,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class ExamMachine {
-    public void login(String userName, String password) {
-        Boolean isExist = this.userBox.containsKey(userName);
-        if(!isExist) {
-            System.out.println("账号或者密码错误");
-            return;
-        }
+    public void login(String userName, String password) throws Exception {
         String uPassword = this.userBox.get(userName);
-        if(uPassword.equals(password)) {
+        if(uPassword != null && uPassword.equals(password)) {
             System.out.println("欢迎来到 xxx 考试");
         } else {
-            System.out.println("账号或者密码错误");
-            return;
+            throw new Exception("账号或者密码错误");
         }
     }
     private HashMap<String,String> userBox = new HashMap<String, String>();
-
     {
         userBox.put("admin", "123456");
     }
@@ -34,11 +27,10 @@ public class ExamMachine {
 //        试卷是不重复 用 set 存储
         HashSet<Question> paper = new HashSet<Question>();
         ArrayList<Question> questionBank = new ArrayList<Question>(this.questionBank);
-        while(paper.size() != 3) {
+        while(paper.size() != 4) {
             int index = (int) (Math.random() * this.questionBank.size());
             paper.add(questionBank.get(index));
         }
-
         return new ArrayList<Question>(paper);
     }
 }

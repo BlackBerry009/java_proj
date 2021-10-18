@@ -14,7 +14,7 @@ public class Question {
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, answer);
+        return this.title.hashCode();
     }
 
     public Question(String title, String answer) {
